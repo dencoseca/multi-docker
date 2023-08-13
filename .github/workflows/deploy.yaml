@@ -18,15 +18,15 @@ jobs:
       - run: docker build -t dencoseca/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true dencoseca/react-test npm test
 
-      - run: docker build -t dencoseca/multi-client-10-14 ./client
-      - run: docker build -t dencoseca/multi-nginx-10-14 ./nginx
-      - run: docker build -t dencoseca/multi-server-10-14 ./server
-      - run: docker build -t dencoseca/multi-worker-10-14 ./worker
+      - run: docker build -t dencoseca/multi-client ./client
+      - run: docker build -t dencoseca/multi-nginx ./nginx
+      - run: docker build -t dencoseca/multi-server ./server
+      - run: docker build -t dencoseca/multi-worker ./worker
 
-      - run: docker push dencoseca/multi-client-10-14
-      - run: docker push dencoseca/multi-nginx-10-14
-      - run: docker push dencoseca/multi-server-10-14
-      - run: docker push dencoseca/multi-worker-10-14
+      - run: docker push dencoseca/multi-client
+      - run: docker push dencoseca/multi-nginx
+      - run: docker push dencoseca/multi-server
+      - run: docker push dencoseca/multi-worker
 
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
